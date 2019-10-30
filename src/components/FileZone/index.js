@@ -5,7 +5,7 @@ import getMockText from '../../text.service';
 import './styles.css';
 
 const FileZone = () => {
-  const { state: { editorText }, updateEditorText} = useContext(TextEditorContext);
+  const { state: { editorText }, updateEditorText } = useContext(TextEditorContext);
 
   const handleOnChange = event => {
     updateEditorText(event.target.value);
