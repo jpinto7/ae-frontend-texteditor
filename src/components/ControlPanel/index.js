@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
+import { CompactPicker } from 'react-color';
 import Select from '../Select';
 import CommandButton from '../CommandButton';
 import { Context as TextEditorContext } from '../../context/TextEditorContext';
 import './styles.css';
 
 const ControlPanel = () => {
-  const { state: { controlPanelMode, synonyms, selectedText, selectedSynonym }, setCommandMode, setSelectedSynonym } = useContext(TextEditorContext);
+  const { state: { controlPanelMode, synonyms, editorTextColor, selectedText, selectedSynonym }, setCommandMode, setSelectedSynonym, setEditorTextColor } = useContext(TextEditorContext);
+
+  const handleOnChangeColorPicker = ({ hex: color }) => {
+    setEditorTextColor(color);
+  };
 
   return (
     <div id="control-panel">
@@ -35,6 +40,10 @@ const ControlPanel = () => {
           <u>U</u>
         </CommandButton>
       </div>
+      <CompactPicker
+        color={editorTextColor}
+        onChange={handleOnChangeColorPicker}
+      />
       <div>
         {selectedText ? <span>Latest selection: <strong>{selectedText}</strong></span> : null}
       </div>

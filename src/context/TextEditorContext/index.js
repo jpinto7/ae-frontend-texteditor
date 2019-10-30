@@ -1,11 +1,6 @@
 import createDataContext from '../createDataContext';
 import * as constants from '../../constants';
 
-const initialContext = {
-  data: [],
-  addBlogPost: () => {}
-};
-
 const initialState = {
   synonyms: [],
   selectedSynonym: '',
@@ -15,7 +10,8 @@ const initialState = {
       italic: false,
       underline: false
   },
-  editorText: ''
+  editorText: '',
+  editorTextColor: '#000000'
 };
 
 const reducer = (state, { type, payload }) => {
@@ -39,6 +35,11 @@ const reducer = (state, { type, payload }) => {
       return {
         ...state,
         selectedSynonym: payload
+      };
+    case constants.SET_EDITOR_TEXT_COLOR:
+      return {
+        ...state,
+        editorTextColor: payload
       };
     case constants.SET_COMMAND_MODE:
       if (typeof payload === 'string') {
@@ -72,6 +73,12 @@ const actions = {
       payload: cmd
     });   
   },
+  setEditorTextColor: dispatch => color => {
+    dispatch({
+      type: constants.SET_EDITOR_TEXT_COLOR,
+      payload: color
+    });
+  },  
   setSelectedText: dispatch => text => {
     dispatch({
       type: constants.SET_SELECTED_TEXT,
@@ -92,4 +99,4 @@ const actions = {
   },      
 };
 
-export const { Context, Provider } = createDataContext(reducer, actions, initialState, initialContext);
+export const { Context, Provider } = createDataContext(reducer, actions, initialState);
