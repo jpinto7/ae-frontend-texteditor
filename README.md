@@ -8,7 +8,9 @@ Run `npm install` in order to setup application
 Run `npm start` for a dev server.
 
 ## Notes
-+ Text sample is given in `text.service.js`
-+ Given files structure is not obligatory and could be changed
++ Text sample (`text.service.js`) is loaded to the editor
++ Context API is used
++ Color picker is displayed but does not changes the text color
++ When selecting a single word, an API call is made automatically to fetch synonyms of that word
 
 
