@@ -30,6 +30,16 @@ const reducer = (state, { type, payload }) => {
         ...state,
         selectedText: payload
       };
+    case constants.SET_SYNONYMS:
+      return {
+        ...state,
+        synonyms: [...payload]
+      };
+    case constants.SET_SELECTED_SYNONYM:
+      return {
+        ...state,
+        selectedSynonym: payload
+      };
     case constants.SET_COMMAND_MODE:
       if (typeof payload === 'string') {
         return {
@@ -67,7 +77,19 @@ const actions = {
       type: constants.SET_SELECTED_TEXT,
       payload: text
     });
-  },  
+  },
+  setSelectedSynonym: dispatch => synonym => {
+    dispatch({
+      type: constants.SET_SELECTED_SYNONYM,
+      payload: synonym
+    });
+  },
+  setSynonyms: dispatch => synonyms => {
+    dispatch({
+      type: constants.SET_SYNONYMS,
+      payload: synonyms
+    });
+  },      
 };
 
 export const { Context, Provider } = createDataContext(reducer, actions, initialState, initialContext);

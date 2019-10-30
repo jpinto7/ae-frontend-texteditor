@@ -3,10 +3,11 @@ import { Context as TextEditorContext } from '../../context/TextEditorContext';
 import ControlPanel from '../ControlPanel';
 import FileZone from '../FileZone';
 import { checkForWord } from '../../utils';
+import datamuse from '../../api/datamuse';
 import './styles.css';
 
 const TextEditor = () => {
-  const { state: { controlPanelMode, selectedText }, setCommandMode, setSelectedText } = useContext(TextEditorContext);
+  const { state: { controlPanelMode, selectedText }, setCommandMode, setSelectedText, setSynonyms } = useContext(TextEditorContext);
   let userSelection;
 
   useEffect(() => {
@@ -18,10 +19,21 @@ const TextEditor = () => {
     }
   });
 
+  const getSynonym = async word => {
+    try {
+        const { data } = await datamuse.get(undefined, { params: { rel_syn: word } });
+        const synonyms = data.map(({ word }) => word);
+        setSynonyms(synonyms);
+    } catch (error) {
+        alert('Something went wrong fetching', error);
+    }
+}
+
   const checkSelection = () => {
     const currentSelectedText = userSelection.toString();
     if (checkForWord(currentSelectedText) && (currentSelectedText !== selectedText)) {
       setSelectedText(currentSelectedText);
+      getSynonym(currentSelectedText);
     }
   };
 
