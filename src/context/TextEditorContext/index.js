@@ -25,6 +25,11 @@ const reducer = (state, { type, payload }) => {
         ...state,
         editorText: payload
       };
+    case constants.SET_SELECTED_TEXT:
+      return {
+        ...state,
+        selectedText: payload
+      };
     case constants.SET_COMMAND_MODE:
       if (typeof payload === 'string') {
         return {
@@ -56,7 +61,13 @@ const actions = {
       type: constants.SET_COMMAND_MODE,
       payload: cmd
     });   
-  }
+  },
+  setSelectedText: dispatch => text => {
+    dispatch({
+      type: constants.SET_SELECTED_TEXT,
+      payload: text
+    });
+  },  
 };
 
 export const { Context, Provider } = createDataContext(reducer, actions, initialState, initialContext);
