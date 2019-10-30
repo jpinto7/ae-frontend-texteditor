@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import ContentEditable from 'react-contenteditable';
 import './styles.css';
 
 class FileZone extends Component {
   render() {
     return (
       <div id="file-zone">
-        <div id="file">
-        </div>
+        <ContentEditable
+          id="file"
+          html='<div>Prueba</div>'
+        />
       </div>
     );
   }

@@ -10,6 +10,8 @@
 #file {
     width: 600px;
     flex-grow: 1;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #e4dede;
+    outline: none;
+    padding: 10px;
 }

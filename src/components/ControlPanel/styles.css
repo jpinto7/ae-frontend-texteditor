@@ -1,13 +1,28 @@
 #control-panel {
     background-color: #fff;
-    height: 25px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
-    padding-top: 5px;
+    padding: 15px 0;
+    width: 620px;
+    margin: 0 auto;
 }
 
-#format-actions {
-    width: 200px;
-    margin-right: 400px;
+.format-action {
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    margin-left: 10px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    transition: all 200ms linear;
+}
+
+.format-action:first-child {
+    margin-left: 0px;
+}
+
+.format-action-active {
+    background-color: #666666;
+    color: white;
 }
