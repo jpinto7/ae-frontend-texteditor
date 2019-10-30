@@ -18,11 +18,22 @@ const initialState = {
 };
 
 const reducer = (state, { type, payload }) => {
-  return state;
+  switch (type) {
+    case 'UPDATE_EDITORTEXT':
+      console.log(payload);
+      return {
+        ...state,
+        editorText: payload
+      };
+    default:
+      return state;
+  }
 };
 
 const actions = {
-
+  updateEditorText: dispatch => text => {
+    dispatch({ type: 'UPDATE_EDITORTEXT', payload: text });
+  }
 };
 
 export const { Context, Provider } = createDataContext(reducer, actions, initialState, initialContext);
