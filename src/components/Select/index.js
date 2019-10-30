@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 const Select = ({ options, onChange, value, disabled }) => {
@@ -14,6 +15,13 @@ const Select = ({ options, onChange, value, disabled }) => {
       {options.map(option => <option key={option} value={option}>{option}</option>)}
     </select>
   );
+};
+
+Select.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired
 };
 
 export default Select;

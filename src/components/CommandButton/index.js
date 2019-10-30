@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CommandButton = ({ cmd, arg, children, onClick, ...buttonProps }) => {
   const handleOnMouseDown = event => {
@@ -16,6 +17,13 @@ const CommandButton = ({ cmd, arg, children, onClick, ...buttonProps }) => {
       {children}
     </button>
   );
+};
+
+CommandButton.propTypes = {
+  cmd: PropTypes.string.isRequired,
+  arg: PropTypes.any,
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default CommandButton;
