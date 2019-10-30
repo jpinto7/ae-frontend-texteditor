@@ -1,23 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Context as TextEditorContext } from '../../context/TextEditorContext';
 import ControlPanel from '../ControlPanel';
 import FileZone from '../FileZone';
-import { checkForWord } from '../../utils';
+import { checkForWord, getUserSelection } from '../../utils';
 import datamuse from '../../api/datamuse';
 import './styles.css';
 
 const TextEditor = () => {
   const { state: { controlPanelMode, selectedText }, setCommandMode, setSelectedText, setSynonyms } = useContext(TextEditorContext);
-  let userSelection;
-
-  useEffect(() => {
-    if (window.getSelection) {
-      userSelection = window.getSelection();
-    }
-    else if (document.selection) {
-      userSelection = document.selection.createRange();
-    }
-  });
+  const userSelection = useRef(getUserSelection());
 
   const getSynonym = async word => {
     try {
@@ -30,7 +21,7 @@ const TextEditor = () => {
 }
 
   const checkSelection = () => {
-    const currentSelectedText = userSelection.toString();
+    const currentSelectedText = userSelection.current.toString();
     if (checkForWord(currentSelectedText) && (currentSelectedText !== selectedText)) {
       setSelectedText(currentSelectedText);
       getSynonym(currentSelectedText);

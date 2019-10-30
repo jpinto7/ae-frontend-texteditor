@@ -12,7 +12,7 @@ const FileZone = () => {
   };
 
   useEffect(() => {
-    getMockText().then(function (result) {
+    getMockText().then(result => {
       updateEditorText(result);
     });
   }, []);
