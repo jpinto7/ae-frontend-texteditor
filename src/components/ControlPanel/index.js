@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { CompactPicker } from 'react-color';
 import Select from '../Select';
 import CommandButton from '../CommandButton';
+import CompactPicker from '../CompactPicker/Compact';
 import { Context as TextEditorContext } from '../../context/TextEditorContext';
 import './styles.css';
 
@@ -9,6 +9,7 @@ const ControlPanel = () => {
   const { state: { controlPanelMode, synonyms, editorTextColor, selectedText, selectedSynonym }, setCommandMode, setSelectedSynonym, setEditorTextColor } = useContext(TextEditorContext);
 
   const handleOnChangeColorPicker = ({ hex: color }) => {
+    document.execCommand('foreColor', false, color);
     setEditorTextColor(color);
   };
 

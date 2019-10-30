@@ -10,7 +10,7 @@ Run `npm start` for a dev server.
 ## Notes
 + Text sample (`text.service.js`) is loaded to the editor
 + Context API is used
-+ Color picker is displayed but does not changes the text color
++ Color picker is now fully functional. I used the CompactPicker extracted from library react-color
 + When selecting a single word, an API call is made automatically to fetch synonyms of that word
 
 

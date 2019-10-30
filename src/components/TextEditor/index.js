@@ -25,7 +25,7 @@ const TextEditor = () => {
         const synonyms = data.map(({ word }) => word);
         setSynonyms(synonyms);
     } catch (error) {
-        alert('Something went wrong fetching', error);
+        alert(`Something went wrong fetching synonyms for word: ${word}`, error);
     }
 }
 
