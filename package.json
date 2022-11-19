@@ -7,7 +7,7 @@
     "react": "^16.2.0",
     "react-contenteditable": "^3.3.2",
     "react-dom": "^16.2.0",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^5.0.1",
     "reactcss": "^1.2.3",
     "tinycolor2": "^1.4.1"
   },
